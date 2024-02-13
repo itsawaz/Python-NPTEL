@@ -1,0 +1,33 @@
+def remdup(a):
+  b=[]
+  for i in a:
+        if i not in b:
+             b.append(i)
+  return(b)
+
+
+def sumsquare(a):
+    odd=[]
+    even=[]
+    for i in a:
+            if i==0:
+                 continue
+            elif i%2==0:
+                 even.append(i)
+            else:
+                odd.append(i)
+    ans_e=0
+    ans_o=0
+    for i in even:
+        ans_e=ans_e+(i*i)
+    for i in odd:
+        ans_o=ans_o+(i*i)
+    ans =[ans_o,ans_e]
+    return(ans)
+
+  
+def transpose(m):
+  transposed_matrix = []
+  for i in range(len(m[0])):
+    transposed_matrix.append([row[i] for row in m])
+  return transposed_matrix
