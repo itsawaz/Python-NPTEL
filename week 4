@@ -1,0 +1,50 @@
+def orangecap(d):
+  r={}
+  for a in d.values():
+      for i,j in a.items():
+        if i not in r:
+            r[i]=j
+        else:
+            runs=r.get(i)
+            r[i]=runs+j
+            
+  max_key = max(r, key=lambda k: r[k])
+  max_value = r[max_key]
+  return(str(max_key),max_value)              
+
+
+def addpoly(p1, p2):
+    r = list()
+    for aq in range(len(p1)):
+        
+        for j in range(len(p2)):
+            if p1[aq][1] == p2[j][1]:
+                r += [(p1[aq][0] + p2[j][0], p1[aq][1])]
+
+        
+        for k in range(len(r)): 
+            if r[k][1] == p1[aq][1]:
+                break
+        else:
+            r += [p1[aq]]
+
+    
+    for j in range(len(p2)):
+        for k in range(len(r)):
+            if r[k][1] == p2[j][1]:
+                break
+        else:
+            r += [p2[j]]
+
+    r = [(c, e) for (c, e) in r if c != 0]  
+    r.sort(key= lambda l : l[1], reverse=True) 
+
+    return r
+
+def multpoly(p1, p2):
+    rv = list()
+    for i in range(len(p1)):
+        for j in range(len(p2)):
+            rv = addpoly([(p1[i][0] * p2[j][0], p1[i][1] + p2[j][1])], rv)
+
+    return(rv)
